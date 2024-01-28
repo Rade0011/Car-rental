@@ -11,7 +11,7 @@ const getUserById = async (userId) => {
     return user;
 };
 
-const createUser = async ({username, isVerified, roles, email, activeRents}) => { // создание юзера
+const createUser = async ({username, isVerified, roles, email, activeRents}) => { 
     try {
     const user =  await User.create({username, isVerified: false, roles: ROLES.DEFAULT, email, activeRents: []});
     return user;
@@ -19,7 +19,7 @@ const createUser = async ({username, isVerified, roles, email, activeRents}) => 
         console.log(ERROR_MESSAGE.E_USER_CREATED, error);    }
 };
 
-const createAdmin = async ({username, isVerified, roles, email, activeRents}) => { // создание админа
+const createAdmin = async ({username, isVerified, roles, email, activeRents}) => { 
     try {
     const user =  await User.create({username, isVerified: true, roles: ROLES.ADMIN, email, activeRents: []});
     return user;
@@ -28,7 +28,7 @@ const createAdmin = async ({username, isVerified, roles, email, activeRents}) =>
     }
 };
 
-const verifiedUser = async (userId, {isVerified}) => { // верификация пользователя
+const verifiedUser = async (userId, {isVerified}) => { 
     try {
         const verify = await User.findByIdAndUpdate(userId, {isVerified: true});
         return verify;
